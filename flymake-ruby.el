@@ -1,11 +1,13 @@
-;;; A flymake handler for ruby-mode files
+;;; flymake-ruby.el --- A flymake handler for ruby-mode files
+;;
+;;; Author: Steve Purcell <steve@sanityinc.com>
+;;; URL: https://github.com/purcell/flymake-ruby
+;;; Version: 0.1
 ;;;
-;;; Author: Steve Purcell <steve at sanityinc dot com>
-;;; Homepage: https://github.com/purcell/flymake-ruby
-;;;
-;;; Usage:
-;;;   (require 'flymake-ruby)
-;;;   (add-hook 'ruby-mode-hook 'flymake-ruby-load)
+;;; Commentary
+;; Usage:
+;;   (require 'flymake-ruby)
+;;   (add-hook 'ruby-mode-hook 'flymake-ruby-load)
 
 
 (defvar flymake-ruby-err-line-patterns '(("^\\(.*\\):\\([0-9]+\\): \\(.*\\)$" 1 2 nil 3)))
@@ -30,3 +32,4 @@
 
 
 (provide 'flymake-ruby)
+;;; flymake-ruby.el ends here
