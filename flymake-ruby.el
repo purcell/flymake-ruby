@@ -8,15 +8,18 @@
 ;; Usage:
 ;;   (require 'flymake-ruby)
 ;;   (add-hook 'ruby-mode-hook 'flymake-ruby-load)
+(require 'flymake)
 
+;;; Code:
 
 (defconst flymake-ruby-err-line-patterns '(("^\\(.*\\):\\([0-9]+\\): \\(.*\\)$" 1 2 nil 3)))
 
 (defvar flymake-ruby-executable "ruby"
-  "The ruby executable to use for syntax checking")
+  "The ruby executable to use for syntax checking.")
 
 ;; Invoke ruby with '-c' to get syntax checking
 (defun flymake-ruby-init ()
+  "Construct a command that flymake can use to check ruby source."
   (list flymake-ruby-executable
         (list "-c" (flymake-init-create-temp-buffer-copy
                     'flymake-create-temp-inplace))))
@@ -26,8 +29,8 @@
   "Configure flymake mode to check the current buffer's ruby syntax.
 
 This function is designed to be called in `ruby-mode-hook'; it
-does not alter flymake's global configuration, so `flymake-mode'
-alone will not suffice."
+does not alter flymake's global configuration, so function
+`flymake-mode' alone will not suffice."
   (interactive)
   (set (make-local-variable 'flymake-allowed-file-name-masks) '(("." flymake-ruby-init)))
   (set (make-local-variable 'flymake-err-line-patterns) flymake-ruby-err-line-patterns)
