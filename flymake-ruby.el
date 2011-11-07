@@ -17,12 +17,20 @@
 (defvar flymake-ruby-executable "ruby"
   "The ruby executable to use for syntax checking.")
 
+(defun flymake-ruby--create-temp-in-system-tempdir (file-name prefix)
+  "Return a temporary file name into which flymake can save.
+
+This is tidier than `flymake-create-temp-inplace', and therefore
+preferable when the checking doesn't depend on the file's exact
+location."
+  (make-temp-file (or prefix "flymake-ruby") nil ".rb"))
+
 ;; Invoke ruby with '-c' to get syntax checking
 (defun flymake-ruby-init ()
   "Construct a command that flymake can use to check ruby source."
   (list flymake-ruby-executable
         (list "-c" (flymake-init-create-temp-buffer-copy
-                    'flymake-create-temp-inplace))))
+                    'flymake-ruby--create-temp-in-system-tempdir))))
 
 ;;;###autoload
 (defun flymake-ruby-load ()
