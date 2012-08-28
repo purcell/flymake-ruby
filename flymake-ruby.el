@@ -12,7 +12,7 @@
 
 ;;; Code:
 
-(defconst flymake-ruby-err-line-patterns '(("^\\(.*\\):\\([0-9]+\\): \\(.*\\)$" 1 2 nil 3)))
+(defconst flymake-ruby-err-line-patterns '(("^\\(.*\\)\.rb:\\([0-9]+\\): \\(.*\\)$" 1 2 nil 3)))
 
 (defvar flymake-ruby-executable "ruby"
   "The ruby executable to use for syntax checking.")
