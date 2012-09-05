@@ -29,7 +29,7 @@ location."
 (defun flymake-ruby-init ()
   "Construct a command that flymake can use to check ruby source."
   (list flymake-ruby-executable
-        (list "-c" (flymake-init-create-temp-buffer-copy
+        (list "-w" "-c" (flymake-init-create-temp-buffer-copy
                     'flymake-ruby--create-temp-in-system-tempdir))))
 
 ;;;###autoload
